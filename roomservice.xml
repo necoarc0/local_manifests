@@ -5,7 +5,7 @@
   
   <!-- Device-specific repositories -->
   <project name="android_device_lenovo_TB125FU" path="device/lenovo/TB125FU" remote="balls" revision="main" />
-  <project name="android_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="balls" revision="main" />
+  <project name="proprietary_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="balls" revision="main" />
   <project name="android_kernel_lenovo_TB125FU" path="kernel/lenovo/TB125FU" remote="balls" revision="main" />
   
   <!-- MediaTek-specific repositories -->
