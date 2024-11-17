@@ -2,11 +2,9 @@
 <manifest>
   <remote name="balls"
           fetch="https://github.com/necoarc0" />
-   <remote name="balls2"
-          fetch="https://gitlab.com/necoarc0" />
   <!-- Device-specific repositories -->
   <project name="android_device_lenovo_TB125FU" path="device/lenovo/TB125FU" remote="balls" revision="main" />
-  <project name="proprietary_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="balls2" revision="main" />
+  <project name="proprietary_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="balls" revision="main" />
   <project name="android_kernel_lenovo_TB125FU" path="kernel/lenovo/TB125FU" remote="balls" revision="main" />
   
   <!-- MediaTek-specific repositories -->
