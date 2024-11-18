@@ -7,7 +7,7 @@
   <!-- Device-specific repositories -->
   <project name="android_device_lenovo_TB125FU" path="device/lenovo/TB125FU" remote="balls" revision="main" />
   <project name="proprietary_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="balls2" revision="main" />
-  <project name="android_kernel_lenovo_TB125FU" path="kernel/lenovo/TB125FU" remote="balls" revision="main" />
+  <project name="android_kernel_lenovo_TB125FU" path="kernel/lenovo/TB125FU" remote="balls2" revision="main" />
   
   <!-- MediaTek-specific repositories -->
   <project name="LineageOS/android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="github" revision="lineage-21" />
