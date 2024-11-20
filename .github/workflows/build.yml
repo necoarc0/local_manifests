@@ -81,9 +81,8 @@ jobs:
       id: kernel
 
     - name: Building kernel
-      run: |
-        make O=out clean mrproper CC=clang ${{ github.event.inputs.CODENAME }}_defconfig 
-        make O=out CC=clang -j$(nproc --all)
+      run: | 
+        make ${{ github.event.inputs.CODENAME }}_defconfig O=out CC=clang -j$(nproc --all)  
         echo "elapsed_time=$(echo "$(date +%s)"-"${{ steps.workspace.outputs.start_time }}" | bc)" >> $GITHUB_OUTPUT
       working-directory: ${{ steps.kernel.outputs.kernel-folder }}
       id: build
