@@ -16,6 +16,7 @@ on:
         type: choice
         description: 'Clang Version'
         options: 
+        - 'clang-r383902'
         - 'clang-r487747c'
         - 'clang-r498229b'
         - 'clang-r510928'
