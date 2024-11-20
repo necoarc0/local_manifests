@@ -91,7 +91,8 @@ jobs:
         export SUBARCH=ARM64
         export CLANG_TRIPLE=aarch64-linux-gnu-
         export CROSS_COMPILE=aarch64-linux-android-
-        make ${{ github.event.inputs.CODENAME }}_defconfig O=out CC=clang -j$(nproc --all)  
+        make O=out CC=clang ${{ github.event.inputs.CODENAME }}_defconfig 
+        make O=out CC=clang -j$(nproc --all)  
         echo "elapsed_time=$(echo "$(date +%s)"-"${{ steps.workspace.outputs.start_time }}" | bc)" >> $GITHUB_OUTPUT
       working-directory: ${{ steps.kernel.outputs.kernel-folder }}
       id: build
