@@ -70,6 +70,7 @@ jobs:
         mkdir clang
         tar -xf clang.tar.gz -C clang
         echo "tools-folder=$(pwd)" >> $GITHUB_OUTPUT
+        chmod +x /home/runner/work/local_manifests/local_manifests/workspace/kernel_tree/tools/build/cpio
       working-directory: ${{ steps.workspace.outputs.workspace-folder }}
       id: tools
 
