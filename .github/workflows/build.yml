@@ -63,7 +63,7 @@ jobs:
 
     - name: Prepare the build environment
       run: |
-        sudo apt-get install flex libncurses5
+        sudo apt-get install flex libncurses5 cpio
         git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-msm-redbull-4.19-android14 --depth=1
         git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-msm-redbull-4.19-android14 --depth=1
         wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-15.0.0_r5/${{ github.event.inputs.CLANG_VERSION }}.tar.gz -O clang.tar.gz
