@@ -3,9 +3,6 @@ name: Kernel Build
 on:
   workflow_dispatch:
     inputs:
-      BUILD_TITLE:
-        description: 'Custom Build Title'
-        required: false
       KERNEL_TREE:
         description: 'Kernel Tree'
         required: true
@@ -19,8 +16,6 @@ on:
         type: choice
         description: 'Clang Version'
         options: 
-        - 'clang-3289846'
-        - 'clang-r475365b'
         - 'clang-r487747c'
         - 'clang-r498229b'
         - 'clang-r510928'
@@ -37,7 +32,7 @@ on:
 jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -45,7 +40,6 @@ jobs:
     - name: Display User Inputs
       run: |
         echo "::group::User Environment Variables"
-        echo "Custom Build Title: ${{ github.event.inputs.BUILD_TITLE }}"
         echo "Kernel Tree: ${{ github.event.inputs.KERNEL_TREE }}/tree/${{ github.event.inputs.KERNEL_TREE_BRANCH }}"
         echo "Codename: ${{ github.event.inputs.CODENAME }}"
         echo "Clang Version: ${{ github.event.inputs.CLANG_VERSION }}"
@@ -55,7 +49,6 @@ jobs:
       run: |
         mkdir workspace
         cd workspace
-
         echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
         echo "start_time=$(date +%s)" >> $GITHUB_OUTPUT
         echo "build_title=${{ github.event.inputs.BUILD_TITLE || github.event.inputs.CODENAME }}" >> $GITHUB_OUTPUT
@@ -63,14 +56,13 @@ jobs:
 
     - name: Prepare the build environment
       run: |
-        sudo apt-get install flex libncurses5 cpio
+        sudo apt-get install flex libncurses5 build-essential
         git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-msm-redbull-4.19-android14 --depth=1
         git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-msm-redbull-4.19-android14 --depth=1
         wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-15.0.0_r5/${{ github.event.inputs.CLANG_VERSION }}.tar.gz -O clang.tar.gz
         mkdir clang
         tar -xf clang.tar.gz -C clang
         echo "tools-folder=$(pwd)" >> $GITHUB_OUTPUT
-        chmod +x /home/runner/work/local_manifests/local_manifests/workspace/kernel_tree/tools/build/cpio
       working-directory: ${{ steps.workspace.outputs.workspace-folder }}
       id: tools
 
