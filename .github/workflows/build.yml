@@ -76,7 +76,6 @@ jobs:
     - name: Building kernel
       run: | 
         export PATH="${{ steps.tools.outputs.tools-folder }}/aarch64-linux-android-4.9/bin:$PATH"
-        export PATH="${{ steps.tools.outputs.tools-folder }}/arm-linux-androideabi-4.9/bin:$PATH"
         export PATH="${{ steps.tools.outputs.tools-folder }}/clang/bin:$PATH"
         export LD_LIBRARY_PATH="${{ steps.tools.outputs.tools-folder }}/clang/lib64:$LD_LIBRARY_PATH}"
         export LD_LIBRARY_PATH="${{ steps.tools.outputs.tools-folder }}/clang/lib:$LD_LIBRARY_PATH}"
