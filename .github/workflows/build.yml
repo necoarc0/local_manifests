@@ -15,16 +15,15 @@ on:
       CLANG_VERSION:
         type: choice
         description: 'Clang Version'
+        default: 'clang-r487747c'
         options: 
-        - 'clang-r383902'
         - 'clang-r487747c'
-        - 'clang-r498229b'
         - 'clang-r510928'
         - 'clang-r522817'
       SEND_NOTIFICATION:
         description: 'Send Notification'
         type: boolean
-        default: true
+        default: false
       UPLOAD_TO_RELEASE:
         description: 'Upload to release'
         type: boolean
