@@ -53,8 +53,7 @@ jobs:
 
       - name: Prepare build environment
         run: |
-          sudo apt-get update
-          sudo apt-get install -y flex build-essential libncurses-dev cpio wget
+          sudo apt-get install -y flex build-essential libncurses-dev cpio
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-msm-redbull-4.19-android14 --depth=1
           wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android14-release/${{ github.event.inputs.CLANG_VERSION }}.tar.gz -O clang.tar.gz
           mkdir clang
