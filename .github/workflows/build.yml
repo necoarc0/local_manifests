@@ -60,9 +60,9 @@ jobs:
           tar -xf clang.tar.gz -C clang
           echo "tools-folder=$(pwd)" >> $GITHUB_ENV
 
-      - name: Clone kernel source inside workspace
+      - name: Clone kernel source
         run: |
-          git clone --depth=1 ${{ github.event.inputs.KERNEL_TREE }} -b ${{ github.event.inputs.KERNEL_TREE_BRANCH }} workspace/kernel
+          git clone ${{ github.event.inputs.KERNEL_TREE }} -b ${{ github.event.inputs.KERNEL_TREE_BRANCH }} workspace/kernel
           echo "kernel-folder=$(pwd)/workspace/kernel" >> $GITHUB_ENV
 
       - name: Build kernel
