@@ -67,8 +67,7 @@ jobs:
       - name: Run gen_vdso_offsets.sh
         run: |
           cd workspace/kernel
-          chmod +x arch/arm64/kernel/vdso/gen_vdso_offsets.sh
-          ./arch/arm64/kernel/vdso/gen_vdso_offsets.sh
+          sed -i 's/\r//' ./arch/arm64/kernel/vdso/gen_vdso_offsets.sh
         
       - name: Build kernel
         run: |
