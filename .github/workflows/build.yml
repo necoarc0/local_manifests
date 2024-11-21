@@ -63,7 +63,10 @@ jobs:
         run: |
           git clone ${{ github.event.inputs.KERNEL_TREE }} -b ${{ github.event.inputs.KERNEL_TREE_BRANCH }} workspace/kernel
           echo "kernel-folder=$(pwd)/workspace/kernel" >> $GITHUB_ENV
-
+          
+      - name: Debug
+        uses: fawazahmed0/action-debug-vscode@main
+        
       - name: Build kernel
         run: |
           export PATH="${{ env.tools-folder }}/aarch64-linux-android-4.9/bin:$PATH"
@@ -77,8 +80,6 @@ jobs:
           make O=out CC=clang ${{ github.event.inputs.CODENAME }}_defconfig
           make O=out CC=clang -j$(nproc --all)
           echo "elapsed_time=$(echo "$(date +%s)"-"${{ env.start_time }}" | bc)" >> $GITHUB_ENV
-      - name: Debug
-        uses: fawazahmed0/action-debug-vscode@main
         
       - name: Check output directory
         run: |
