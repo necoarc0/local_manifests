@@ -53,7 +53,6 @@ jobs:
 
       - name: Prepare build environment
         run: |
-          sudo apt-get install -y flex build-essential libncurses-dev cpio
           git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-msm-redbull-4.19-android14 --depth=1
           wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android14-release/${{ github.event.inputs.CLANG_VERSION }}.tar.gz -O clang.tar.gz
           mkdir clang
@@ -78,7 +77,9 @@ jobs:
           make O=out CC=clang ${{ github.event.inputs.CODENAME }}_defconfig
           make O=out CC=clang -j$(nproc --all)
           echo "elapsed_time=$(echo "$(date +%s)"-"${{ env.start_time }}" | bc)" >> $GITHUB_ENV
-
+      - name: Debug
+        uses: fawazahmed0/action-debug-vscode@main
+        
       - name: Check output directory
         run: |
           ls -al ${{ env.kernel-folder }}/out/arch/arm64/boot/
