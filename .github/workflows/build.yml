@@ -75,6 +75,7 @@ jobs:
           export SUBARCH=ARM64
           export CLANG_TRIPLE=aarch64-linux-gnu-
           export CROSS_COMPILE=aarch64-linux-android-
+          cd workspace/kernel
           make O=out CC=clang ${{ github.event.inputs.CODENAME }}_defconfig
           make O=out CC=clang -j$(nproc --all)
           echo "elapsed_time=$(echo "$(date +%s)"-"${{ env.start_time }}" | bc)" >> $GITHUB_ENV
@@ -106,7 +107,7 @@ jobs:
           path: ${{ env.kernel-folder }}/out/arch/arm64/boot/Image.gz
 
       - name: Send Telegram notification for success
-        uses: appleboy/telegram-action@master
+        uses: appleboy/telegram-action@v1.0.1
         env: 
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
         if: ${{ success() && env.TELEGRAM_TO != '' && github.event.inputs.SEND_NOTIFICATION == 'true' }}
@@ -123,7 +124,7 @@ jobs:
           format: html
 
       - name: Send Telegram notification for failure
-        uses: appleboy/telegram-action@master
+        uses: appleboy/telegram-action@v1.0.1
         env: 
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
         if: ${{ failure() && env.TELEGRAM_TO != '' && github.event.inputs.SEND_NOTIFICATION == 'true' }}
