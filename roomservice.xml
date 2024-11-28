@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="balls"
+  <remote name="github"
           fetch="https://github.com/necoarc0" />
-  <remote name="balls2"
-          fetch="https://gitlab.com/necoarc0" />
-   <remote name="balls3"
-          fetch="https://gitlab.com/neco-group" />
   <!-- Device-specific repositories -->
-  <project name="android_device_lenovo_TB125FU" path="device/lenovo/TB125FU" remote="balls" revision="main" />
-  <project name="proprietary_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="balls2" revision="main" />
-  <project name="android_kernel_lenovo_TB125FU" path="kernel/lenovo/TB125FU" remote="balls3" revision="main" />
-  <project name="android_kernel_lenovo_TB125FU-modules" path="kernel/lenovo/TB125FU-modules" remote="balls3" revision="main" />
+  <project name="android_device_lenovo_TB125FU" path="device/lenovo/TB125FU" remote="github" revision="main" />
+  <project name="proprietary_vendor_lenovo_TB125FU" path="vendor/lenovo/TB125FU" remote="github" revision="main" />
+  <project name="android_kernel_lenovo_TB125FU" path="kernel/lenovo/TB125FU" remote="github" revision="main" />
+  <project name="android_kernel_lenovo_TB125FU-modules" path="kernel/lenovo/TB125FU-modules" remote="github" revision="main" />
   <!-- MediaTek-specific repositories -->
   <project name="LineageOS/android_device_mediatek_sepolicy_vndr" path="device/mediatek/sepolicy_vndr" remote="github" revision="lineage-21" />
   <project name="LineageOS/android_hardware_mediatek" path="hardware/mediatek" remote="github" revision="lineage-21" />
